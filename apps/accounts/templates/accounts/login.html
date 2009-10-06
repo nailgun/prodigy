@@ -1,0 +1,29 @@
+<form action="." method="POST">
+	<h1>Login |
+		<a href="{% url prodigy.apps.accounts.views.register %}?next={{ next }}">Register</a>
+	</h1>
+	<input type="hidden" name="next" value="{{ next }}" />
+	{{ form.non_field_errors }}
+	<table>
+		{% for field in form %}
+		<tr>
+			<th>{{ field.label_tag }}:</th>
+			<td>{{ field }}</td>
+			<td>{{ field.help_text }}{{ field.errors }}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th><input type="submit" value="Login" /></th>
+			<td>
+				<input type="button" value="Cancel"
+					onclick="location.href='{{ next }}'" />
+			</td>
+			<td></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		document.getElementById('id_username').focus();
+	</script>
+</form>
+
+{# vim:set ft=htmldjango ts=4 sw=4 tw=0 noet: #}
